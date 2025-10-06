@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container {
+            position: relative;
+            width: 480px;
+            height: 300px;
+            border: 3px dashed #3498db;
+            margin: 30px auto;
+            background-color: #f8f9fa;
+        }
+
+        .absolute-box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            color: white;
+            line-height: 100px;
+            font-weight: bold;
+            background-color: red;
+            text-align: center;
+        }
+
+        .top-left {
+            top: 20px;
+            left: 20px;
+            background-color: blue;
+        }
+
+        .top-right{
+            top: 20px;
+            right: 20px;
+            background-color: purple;
+        }
+
+        .bottom-left {
+            bottom: 20px;
+            left: 20px;
+            background-color: darkolivegreen;
+        }
+
+        .bottom-right {
+            bottom: 20px;
+            right: 20px;
+            background-color: green;
+        }
+
+        .center {
+            top: 50%;
+            left: 50%;
+            background-color: black
+        }
+    </style>
+</head>
+<body>
+    <h1>ABSOLUTE Positioning</h1>
+
+    <p>
+        Also removes an element fro the document natural flow and positions
+        it relative to its nearest positioned acestor (any parent with 
+        position other than static). If no positioned ancestor exists,
+        it positions relative to the document.
+    </p>
+
+    <h2>Key Characteristics</h2>
+    <ul>
+        <li>Removed from document flow</li>
+        <li>Positionede relative to neares ancestor</li>
+        <li>Takes up no space in the layout</li>
+        <li>Always must exists a parent and a child element</li>
+    </ul>
+
+    <section class="container">
+        <div class="absolute-box top-left">Top Left</div>
+        <div class="absolute-box top-right" >Top Right</div>
+        <div class="absolute-box bottom-left">Bottom Left</div>
+        <div class="absolute-box bottom-right">Bottom Right</div>
+        <div class="absolute-box center">Center</div>
+    </section>
+</body>
+</html>

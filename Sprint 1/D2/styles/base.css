@@ -1,0 +1,111 @@
+@import url(./site-header/site-header.css);
+@import url(./nav/nav.css);
+
+body {
+    margin-top: 70px;
+}
+
+.main-content{
+    max-width: 1200px;
+    height: 2000px;
+    background-color: azure;
+}
+
+/* BEM FAB COMPONENT */
+
+.fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 100;
+}
+
+.fab__content{
+    display: block;
+    line-height: 60px;
+    color: white;
+    text-decoration: none;
+}
+
+/* END - BEM FAB COMPONENT */
+.main__container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 2px solid #333333;
+    width: 650px;
+    position: static;
+    margin-bottom: 15px;
+}
+
+.box {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 2px solid #2980b9;
+    position: static;
+}
+
+.box--relative {
+    position: relative;
+    top: 20px;
+    left: 50px;
+    background-color: tomato;
+    border-color: rgb(177, 35, 10);
+    
+}
+
+.box--fixed {
+    position: fixed;
+    background-color: rgb(105, 71, 255);
+    border-color: rgb(52, 10, 177);
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    padding: 15px 0px;
+}
+
+/* CARD PRODUCT BLOCK */
+.card-product {
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    padding: 16px;
+    width: 125px;
+    position: relative;
+    height: 150px
+}
+
+.card-product__image{ 
+    width: 100%;
+}
+
+.card-product__badge {
+    position: relative;
+    bottom: 20px;
+    left: 20px;
+    background-color: #e74c3c;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.card-product__title {
+    position: relative;
+    bottom: 15px;
+}
+
+.card-product:hover {
+    bottom: 50px;
+    cursor: pointer;
+}

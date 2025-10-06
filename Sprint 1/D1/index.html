@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Learn HTML, CSS and JavaScript for web Development">
+    <meta name="keywords" content="HTML, CSS, Web Development, JS, JavaScript, Coding">
+    <meta name="author" content="John Doe, Chase Coley, Shams Naji">
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/base.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <h1>BEM</h1>
+        <p>
+            Block, Element, Modifier, it's a naming convention and methodology for writing CSS that
+            makes your code more orgnized, scalable, and maintainable
+        </p>
+
+        <h2>Why use BEM</h2>
+        <p>We always will have problems with CSS</p>
+        <div>
+            <ul>
+                <li>Class Names can be confusing and unclear</li>
+                <li>Styles can accidentally affect unintented elements</li>
+                <li>Code becomes harder to maintain</li>
+                <li>Team Collaboration becomes difficult</li>
+            </ul>
+        </div>
+
+        <h2>BEM Solutions</h2>
+        <ul>
+            <li>Clear, descriptive and organized class names</li>
+            <li>Isolated components that do not interfere with each other</li>
+            <li>Easy to understand and maintanin code structure</li>
+            <li>Consistent naming across teams</li>
+        </ul>
+
+        <h2>BEM Naming Convention</h2>
+        <code>
+            <p><em>block</em>: The main component (header, menu, card)</p>
+
+            <p><em>block__element</em>: Achild part of the block (menu__item, header__title, card__content, card__image, card__title)</p>
+
+            <p><em>block__element--modifier</em>: A variation of the component or change state (button--small, button--large, menu--horizontal, menu--vertical, mode--light, mode--dark)</p>
+        </code>
+    </main>
+
+    <div class="container">
+
+        <div class="card">
+            <figure class="card__image"></figure>
+            <div class="card__content">
+                <h1 class="card__title">
+                    Test Title
+                </h1>
+                <p class="card__text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eveniet culpa saepe quasi facere aliquam beatae voluptatem modi sed illum, ut et doloremque, consectetur atque minima molestiae fuga optio provident?
+                </p>
+            </div>
+            <button class="card__button card__button--green">Clic Me!</button>
+            <button class="card__button card__button--blue">Clic Me!</button>
+            <button class="card__button card__button--aquamarine">Clic Me!</button>
+            <button class="card__button">Clic Me!</button>
+            <button class="card__button">Clic Me 1!</button>
+        </div>
+
+        <div class="card">
+            <figure class="card__image"></figure>
+            <div class="card__content">
+                <h1 class="card__title">
+                    Test Title
+                </h1>
+                <p class="card__text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eveniet culpa saepe quasi facere aliquam beatae voluptatem modi sed illum, ut et doloremque, consectetur atque minima molestiae fuga optio provident?
+                </p>
+            </div>
+            <button class="card__button card__button--green">Clic Me!</button>
+            <button class="card__button card__button--blue">Clic Me!</button>
+            <button class="card__button card__button--aquamarine">Clic Me!</button>
+            <button class="card__button">Clic Me!</button>
+            <button class="card__button">Clic Me 1!</button>
+        </div>
+
+        <div class="card">
+            <figure class="card__image"></figure>
+            <div class="card__content">
+                <h1 class="card__title">
+                    Test Title
+                </h1>
+                <p class="card__text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eveniet culpa saepe quasi facere aliquam beatae voluptatem modi sed illum, ut et doloremque, consectetur atque minima molestiae fuga optio provident?
+                </p>
+            </div>
+            <button class="card__button card__button--green">Clic Me!</button>
+            <button class="card__button card__button--blue">Clic Me!</button>
+            <button class="card__button card__button--aquamarine">Clic Me!</button>
+            <button class="card__button">Clic Me!</button>
+            <button class="card__button">Clic Me 1!</button>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

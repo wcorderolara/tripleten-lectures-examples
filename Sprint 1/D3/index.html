@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Full Example | CSS HTML</title>
+</head>
+
+<body>
+
+    <!-- FIXED HEADER -->
+    <header class="fixed-header">
+        <div class="fixed-header__logo">
+            <i class="fa-solid fa-rocket"></i>
+            <span>TripleTen</span>
+        </div>
+        <nav class="fixed-header__navigation">
+            <ul class="fixed-header__navigation__links">
+                <li><a><i class="fa-solid fa-house"></i>Home</a></li>
+                <li><a><i class="fa-solid fa-circle-info"></i>About</a></li>
+                <li><a><i class="fa-solid fa-gear"></i>Services</a></li>
+                <li><a><i class="fa-solid fa-briefcase"></i>Portfolio</a></li>
+                <li><a><i class="fa-solid fa-envelope"></i>Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- JUMBOTRON WITH ABSOLUTE POSITIONING -->
+    <section class="jumbotron">
+        <div class="jumbotron__content">
+            <h1>Welcome to Master CSS Session</h1>
+            <p>Learn how to create stunning layouts with fixed, absolute positionint
+                dynamic content, and more. Take your web design skills to the next Level.
+            </p>
+            <a class="jumbotron__content__cta-button">
+                Get Started <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- DYNAMIC MAIN CONTENT -->
+    <main class="content">
+        <section class="content__section">
+            <h2>Our Services</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eius beatae id molestiae pariatur! Maiores pariatur id ipsum totam numquam ipsam, debitis aliquam, quo aut velit, eveniet quis. Nesciunt, magnam.
+            </p>
+
+            <div class="content__section__card-container">
+                <div class="card">
+                    <figure 
+                        class="card__image"
+                        style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></figure>
+                    <div class="card__content">
+                        <h3>Web Development</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla, vero non rerum reprehenderit tenetur nemo saepe mollitia omnis sint, distinctio minima, minus molestiae ratione enim ipsam numquam ex porro odit?</p>
+                        <a href="" class="card__button">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <figure 
+                        class="card__image"
+                        style="background-image: url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></figure>
+                    <div class="card__content">
+                        <h3>UI/UX Design</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus praesentium velit reiciendis nesciunt dolorem quaerat nulla in natus minus, dignissimos hic amet, fugit ipsa, itaque eaque cumque temporibus eveniet ea.</p>
+                        <a href="" class="card__button">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <figure 
+                        class="card__image"
+                        style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></figure>
+                    <div class="card__content">
+                        <h3>Digital Marketing</h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae cum corporis maxime ab et! Dolorem incidunt ab accusamus error provident aperiam blanditiis excepturi, alias fugiat molestiae qui in facere nesciunt.</p>
+                        <a href="" class="card__button">Lean More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content__section">
+            <h2>CSS Positioning Techniques</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga ipsam quaerat mollitia voluptatum illum, omnis eveniet iusto, assumenda laboriosam soluta esse ex enim commodi eius ut delectus quisquam dicta fugiat?</p>
+
+            <div class="content__section__card-container">
+                <div class="card">
+                    <div class="card__content">
+                        <h3><i class="fa-solid fa-thumbtack"></i> Fixed Positioning</h3>
+                        <p>The header and FAB Button use fixed postioning to staty in place while scrolling</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__content">
+                        <h3><i class="fa-solid fa-up-down-left-right"></i> Absolute Positioning</h3>
+                        <p>The Jumbotron content is centered using absolute positioning within its container.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__content">
+                        <h3><i class="fa-solid fa-layer-group"></i> Z-Index Control</h3>
+                        <p>Elements are property layered using z-index to ensure correct visibility</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content__section">
+            <h2>About us</h2>
+            <p>We're [Company Name], and we believe in [the core belief that drives your business]. It all started with a simple idea born from a common frustration. Our founder, [Founder's Name], was tired of [explain the industry problem or inefficiency], and decided there had to be a better way.</p>
+            <p>In [Year], with little more than a [humble beginnings, e.g., kitchen table, garage workshop], we set out to build something different. Our mission wasn't just to create a [product/service], but to redefine what it meant to [solve a key customer problem].</p>
+            <p>Today, we're proud to be a team of passionate [roles, e.g., artisans, innovators, experts] dedicated to [what you do]. What began as a personal quest has grown into a community of like-minded people who believe in [your core value, e.g., quality, sustainability, simplicity]. We are still driven by the same vision that started it all: to put the customer first in everything we do.</p>
+        </section>
+    </main>
+
+    <!-- FOOTER  -->
+    <footer class="footer">
+        <div class="footer__content">
+
+            <div class="footer__section">
+                <h3>TripleTen</h3>
+                <p>
+                    Creating Exceptional digital experiences through innovative web design and development
+                </p>
+
+                <div class="footer__social-links">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-square-x-twitter"></i></a>
+                    <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footer__section">
+                <h3>Quick Links</h3>
+                <ul class="footer__links">
+                    <li><a>Home</a></li>
+                    <li><a>About Us</a></li>
+                    <li><a>Services</a></li>
+                    <li><a>Portfolio</a></li>
+                    <li><a>Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__section">
+                <h3>Contact Info</h3>
+                <ul class="footer__links">
+                    <li><i class="fa-solid fa-location-dot"></i> 299 South Main, Suite 1300, Salt Lake City, UT 84101</li>
+                    <li><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fa-solid fa-envelope"></i> info@tripleten.com</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer__copyright">
+            <p>
+                &copy; 2025 TripleTen. All rights reserved. | Software Engineering Program
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

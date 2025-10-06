@@ -1,0 +1,16 @@
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav__link {
+    color: #34495e;
+    text-decoration: none;
+    padding: 8px 16px;
+    transition: color 0.3s;
+}
+
+.nav__link:hover {
+    color: #3498db;
+    cursor: pointer;
+}

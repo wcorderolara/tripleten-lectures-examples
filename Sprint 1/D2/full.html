@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Web Layout with CSS Positioning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* FIXED HEADER */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* JUMBOTRON WITH ABSOLUTE POSITIONING */
+        .jumbotron-container {
+            position: relative;
+            height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            margin-top: 70px; /* Account for fixed header */
+            color: white;
+            overflow: hidden;
+        }
+
+        .jumbotron-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 80%;
+            max-width: 800px;
+            z-index: 10;
+        }
+
+        .jumbotron-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .jumbotron-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        /* DYNAMIC MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            padding: 50px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .content-section {
+            margin-bottom: 60px;
+        }
+
+        .content-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .content-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            border-radius: 2px;
+        }
+
+        .card-container {
+            /* display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            position: static;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+            position:relative;
+        }
+
+        .card:hover {
+            /* transform: translateY(-10px); */
+            top: -10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .card-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .card-button:hover {
+            background-color: #2980b9;
+        }
+
+        /* STICKY FOOTER */
+        .sticky-footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px 5%;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #3498db;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #3498db;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #3498db;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* FAB BUTTON */
+        .fab-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .fab-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.7);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+            }
+            50% {
+                box-shadow: 0 6px 30px rgba(255, 107, 107, 0.8);
+            }
+            100% {
+                box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .fixed-header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .jumbotron-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .jumbotron-content p {
+                font-size: 1rem;
+            }
+            
+            .content-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .fab-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- FIXED HEADER -->
+    <header class="fixed-header">
+        <div class="logo">
+            <i class="fas fa-rocket"></i>
+            <span>WebCraft</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
+            <li><a href="#"><i class="fas fa-images"></i> Portfolio</a></li>
+            <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- JUMBOTRON WITH ABSOLUTE POSITIONING -->
+    <section class="jumbotron-container">
+        <div class="jumbotron-content">
+            <h1>Master CSS Positioning</h1>
+            <p>Learn how to create stunning layouts with fixed headers, absolute positioning, dynamic content, and more. Take your web design skills to the next level.</p>
+            <a href="#" class="cta-button">Get Started <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- DYNAMIC MAIN CONTENT -->
+    <main class="main-content">
+        <section class="content-section">
+            <h2>Our Services</h2>
+            <p>We offer a wide range of web development and design services to help your business succeed online.</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>Web Development</h3>
+                        <p>Custom web applications built with modern technologies and best practices for optimal performance.</p>
+                        <a href="#" class="card-button">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>UI/UX Design</h3>
+                        <p>User-centered design solutions that create engaging and intuitive digital experiences.</p>
+                        <a href="#" class="card-button">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>Digital Marketing</h3>
+                        <p>Strategic marketing campaigns to increase your online visibility and drive business growth.</p>
+                        <a href="#" class="card-button">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>CSS Positioning Techniques</h2>
+            <p>This page demonstrates various CSS positioning techniques in action:</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-thumbtack"></i> Fixed Positioning</h3>
+                        <p>The header and FAB button use fixed positioning to stay in place while scrolling.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-arrows-alt"></i> Absolute Positioning</h3>
+                        <p>The jumbotron content is centered using absolute positioning within its container.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3><i class="fas fa-layer-group"></i> Z-Index Control</h3>
+                        <p>Elements are properly layered using z-index to ensure correct visibility.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>About Our Approach</h2>
+            <p>We believe in creating web experiences that are not only visually appealing but also highly functional and user-friendly. Our team of experts combines technical expertise with creative design to deliver solutions that exceed expectations.</p>
+            <p>With a focus on responsive design, performance optimization, and accessibility, we ensure that your website works seamlessly across all devices and for all users.</p>
+            <p>Our iterative development process allows for continuous improvement and adaptation to changing requirements, ensuring that the final product perfectly aligns with your vision and goals.</p>
+        </section>
+    </main>
+
+    <!-- STICKY FOOTER -->
+    <footer class="sticky-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>WebCraft</h3>
+                <p>Creating exceptional digital experiences through innovative web design and development.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Design Street, Creative City</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@webcraft.com</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 WebCraft. All rights reserved. | Master CSS Positioning Example</p>
+        </div>
+    </footer>
+
+    <!-- FAB BUTTON -->
+    <div class="fab-button">
+        <i class="fas fa-comment"></i>
+    </div>
+
+    <script>
+        // Simple script to demonstrate FAB button functionality
+        document.querySelector('.fab-button').addEventListener('click', function() {
+            alert('Hello! This is the Floating Action Button. In a real application, this could open a chat interface or a quick action menu.');
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.fixed-header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(42, 67, 101, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

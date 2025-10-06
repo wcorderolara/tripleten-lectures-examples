@@ -1,0 +1,37 @@
+@import url("./components/card/card.css");
+@import url("./components/button/button.css");
+
+/* GLOBAL OR GENERAL VARIABLES */
+:root {
+   /* theme colors */
+   --primary-color: #E84C4F
+}
+
+table,
+tr,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#portfolio {
+    background-color: orange;
+}
+
+#contact {
+    background-color: gray
+}
+
+a {
+    border: 1px solid transparent
+}
+
+a:hover {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border: 2px solid orange;
+    border-radius: 5px;
+}
+
+

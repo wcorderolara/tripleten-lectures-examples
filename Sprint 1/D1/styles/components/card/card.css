@@ -1,0 +1,63 @@
+/* BEM ORDER */
+
+/* LOCAL VARIABLES  */
+:root {
+     --card-padding: 20px;
+}
+
+/* BLOCK RULES */
+.card {
+    border: 1px solid #ccc;
+    padding: var(--card-padding);
+    border-radius: 8px;
+    width: 490px;
+}
+
+/* BLOCK ELEMENTS RULES */
+.card__image {
+
+}
+
+.card__content {
+
+}
+
+/* 
+    this is the best practice for nesting elements with
+    BEM
+*/
+.card__content .card__title {
+    color: var(--primary-color);
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.card__content .card__text {
+    color: darkgray;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.card__button {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background-color: darkgray;
+}
+
+/* BLOCK or BLOCK ELEMENTS MODIFIERS RULES */
+
+.card__button--green {
+    background-color: green;
+}
+
+.card__button--blue {
+    background-color: #007bff;
+}
+
+.card__button--aquamarine {
+    background-color: aquamarine;
+    color: black;
+}

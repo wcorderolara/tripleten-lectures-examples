@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative;
+            width: 480px;
+            height: 300px;
+            border: 3px dashed #3498db;
+            margin: 30px auto;
+            background-color: #f8f9fa;
+        }
+
+        .absolute-box {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            color: white;
+            line-height: 200px;
+            font-weight: bold;
+            background-color: red;
+            text-align: center;            
+        }
+
+        .box-1 {
+            top: 50px;
+            left: 50px;
+            z-index: 1;
+            background-color: rgba(231,76, 60, 0.8);
+        }
+
+        .box-2 {
+            top: 100px;
+            left: 100px;
+            z-index: 2;
+            background-color: rgba(52, 152, 219, 0.8);
+        }
+
+        .box-3 {
+            top: 150px;
+            left: 150px;
+            z-index: 3;
+            background-color: rgba(46, 204, 113, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <h1>Z-INDEX Property</h1>
+    <p>
+        The z-index property controls the stacking order of positioned 
+        elements.
+    </p>
+    <p>
+        Z-index property ONLY works on elements with a position of
+        <ul>
+            <li>relative</li>
+            <li>absolute</li>
+            <li>fixed</li>
+            <li>sticky</li>
+        </ul>
+    </p>
+
+    <section class="container">
+        <div class="absolute-box box-1">1</div>
+        <div class="absolute-box box-2" >2</div>
+        <div class="absolute-box box-3">3</div>
+    </section>
+</body>
+</html>

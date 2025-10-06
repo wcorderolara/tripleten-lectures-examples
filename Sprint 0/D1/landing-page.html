@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maestría en Repostería Digital - Transforma tu Pasión en Negocio</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --color-gold: #D4AF37;
+            --color-fuchsia: #FF00FF;
+            --color-fuchsia-dark: #CC00CC;
+            --color-black: #000000;
+            --color-dark-gray: #1A1A1A;
+            --color-light-bg: #FFF8F5;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1920x1080/pastel/white?text=Imagen+Principal+Deliciosa') no-repeat center center/cover;
+            padding: 8rem 0;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 5rem 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-section .lead {
+                font-size: 1.1rem;
+            }
+        }
+        
+        .bg-pastel {
+            background-color: var(--color-light-bg);
+        }
+        
+        .btn-primary {
+            background-color: var(--color-fuchsia);
+            border-color: var(--color-fuchsia);
+            padding: 1rem 2rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--color-fuchsia-dark);
+            border-color: var(--color-fuchsia-dark);
+            color: white;
+        }
+        
+        .btn-accent {
+            background-color: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-black);
+            font-weight: bold;
+        }
+        
+        .btn-accent:hover {
+            background-color: #C19C30;
+            border-color: #C19C30;
+            color: var(--color-black);
+        }
+        
+        .text-gold {
+            color: var(--color-gold) !important;
+        }
+        
+        .text-fuchsia {
+            color: var(--color-fuchsia) !important;
+        }
+        
+        .bg-dark-custom {
+            background-color: var(--color-dark-gray) !important;
+        }
+        
+        .border-gold {
+            border: 2px solid var(--color-gold);
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--color-gold);
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: var(--color-fuchsia);
+            color: white;
+        }
+        
+        .nav-pills .nav-link {
+            color: var(--color-dark-gray);
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, var(--color-gold), var(--color-fuchsia));
+            color: white;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0 auto;
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 576px) {
+            .price-tag {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .price-tag .h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .module-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-top: 4px solid var(--color-fuchsia);
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .bonus-badge {
+            background-color: var(--color-gold);
+            color: var(--color-black);
+        }
+        
+        .footer {
+            background-color: var(--color-black);
+            color: white;
+        }
+        
+        .social-icon {
+            color: var(--color-gold);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: var(--color-fuchsia);
+        }
+        
+        /* Mejoras de responsive */
+        .navbar-toggler {
+            border-color: var(--color-gold);
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28212, 175, 55, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        .sticky-top {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+        }
+        
+        /* Ajustes para mejorar la legibilidad en móviles */
+        @media (max-width: 768px) {
+            .display-3 {
+                font-size: 2.5rem;
+            }
+            
+            .display-5 {
+                font-size: 2rem;
+            }
+            
+            .card-body {
+                padding: 1.25rem;
+            }
+            
+            .accordion-button {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+            }
+            
+            .btn-lg {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Ajustes para tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-section {
+                padding: 6rem 0;
+            }
+            
+            .display-3 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="text-gold fw-bold"><i class="fas fa-cake me-2"></i>Repostería</span> <span class="text-fuchsia">Digital</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#beneficios">Beneficios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonios">Testimonios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#modulos">Módulos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#oferta">Precio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+                    <li class="nav-item d-grid d-md-block mt-2 mt-md-0">
+                        <a href="#oferta" class="btn btn-primary">¡Quiero Comprar!</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold">¡Deja de Hornear y Empieza a <span class="text-gold">Ganar</span>!</h1>
+            <p class="lead my-4">Descubre el método probado para crear recetas digitales irresistibles, montar tu tienda online y vender en automático desde cualquier lugar del mundo.</p>
+            <a href="#oferta" class="btn btn-primary btn-lg">¡QUIERO ACCEDER AL CURSO AHORA! <i class="fas fa-arrow-right ms-2"></i></a>
+            <div class="mt-4">
+                <a href="#beneficios" class="btn btn-accent me-2 d-block d-md-inline-block mb-2 mb-md-0"><i class="fas fa-play-circle me-2"></i>Ver Video</a>
+                <a href="#testimonios" class="btn btn-outline-light d-block d-md-inline-block">Ver Testimonios</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROBLEM SECTION -->
+    <section class="py-5 bg-dark-custom text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h2 class="mb-5">¿Te Sientes Atrapada...</h2>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <p><i class="fas fa-times-circle fa-3x text-fuchsia mb-3"></i></p>
+                    <p>...gastando mucho dinero en ingredientes que se echan a perder?</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <p><i class="fas fa-times-circle fa-3x text-fuchsia mb-3"></i></p>
+                    <p>...cansada de limpiar hornos y bowls sin ver ganancias reales?</p>
+                </div>
+                <div class="col-md-4">
+                    <p><i class="fas fa-times-circle fa-3x text-fuchsia mb-3"></i></p>
+                    <p>...sin tiempo para tu familia porque siempre estás en la cocina?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION SECTION -->
+    <section class="py-5 bg-pastel">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-2 order-lg-1">
+                    <h2>Imagina Instead...</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-check-circle text-gold me-2"></i> <strong>Crear una vez, vender infinitas veces</strong> sin más esfuerzo.</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-gold me-2"></i> <strong>Tener ingresos 24/7</strong> incluso mientras duermes o vacacionas.</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-gold me-2"></i> <strong>Libertad total</strong> para trabajar desde tu casa, una cafetería o la playa.</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-gold me-2"></i> <strong>Scalar tu pasión</strong> sin límites de producción física.</li>
+                    </ul>
+                    <p class="mt-4 fst-italic border-start border-gold ps-3">"La repostería digital fue la mejor decisión de mi vida. ¡Ahno gano 5 veces más trabajando 80% menos!" - Ana P., Alumna Destacada</p>
+                </div>
+                <div class="col-lg-6 text-center order-1 order-lg-2 mb-4 mb-lg-0">
+                    <!-- Reemplaza con un video o imagen atractiva de tu curso -->
+                    <div class="position-relative">
+                        <img src="https://placehold.co/600x400/pastel/white?text=Video+o+Imagen+Curso" alt="Resultados del Curso de Repostería Digital" class="img-fluid rounded shadow"/>
+                        <div class="position-absolute top-50 start-50 translate-middle">
+                            <a href="#" class="btn btn-primary btn-lg rounded-circle"><i class="fas fa-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section id="beneficios" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">¿Qué Lograrás con Este Curso?</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100 shadow-sm module-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-laptop-code fa-3x text-fuchsia mb-3"></i>
+                            <h5 class="card-title">Domina las Herramientas Digitales</h5>
+                            <p class="card-text">Aprende a usar programas simples y gratuitos para diseñar recetas digitales hermosas y profesionales.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100 shadow-sm module-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-store fa-3x text-fuchsia mb-3"></i>
+                            <h5 class="card-title">Monta Tu Tienda Online en un Día</h5>
+                            <p class="card-text">Guía paso a paso para configurar tu propia plataforma de ventas sin necesidad de ser experta en tecnología.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100 shadow-sm module-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-bullhorn fa-3x text-fuchsia mb-3"></i>
+                            <h5 class="card-title">Estrategias de Marketing para Vender</h5>
+                            <p class="card-text">Descubre cómo atraer clientes ideales a tu tienda usando redes sociales de forma orgánica y con ads低inversión.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100 shadow-sm module-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-chart-line fa-3x text-fuchsia mb-3"></i>
+                            <h5 class="card-title">Automatiza Tu Negocio</h5>
+                            <p class="card-text">Sistemas de pago, entrega automática de productos y atención al cliente. ¡Todo en piloto automático!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonios" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">¿Qué Dicen Nuestras Reposteras Digitales?</h2>
+            <div class="row">
+                <!-- Testimonio 1 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://placehold.co/100x100/pastel/white?text=M" alt="Maria G." class="testimonial-img mb-3">
+                            <p class="fst-italic">"En solo 3 meses logré reemplazar mi salario de tiempo completo. Mis recetas de galletas decoradas ahora las compran en toda Latinoamérica."</p>
+                            <h5 class="mt-3">María G. - México</h5>
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonio 2 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://placehold.co/100x100/pastel/white?text=C" alt="Carolina L." class="testimonial-img mb-3">
+                            <p class="fst-italic">"La inversión del curso la recuperé con la venta de mis primeros 5 paquetes de recetas. ¡No podía creerlo! El módulo de Instagram fue un game-changer para mí."</p>
+                            <h5 class="mt-3">Carolina L. - Colombia</h5>
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonio 3 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://placehold.co/100x100/pastel/white?text=P" alt="Paula R." class="testimonial-img mb-3">
+                            <p class="fst-italic">"Como madre de dos niños pequeños, el tiempo es oro. Ahora tengo un ingreso estable sin sacrificar tiempo con mi familia. ¡Es la libertad que siempre soñé!"</p>
+                            <h5 class="mt-3">Paula R. - Argentina</h5>
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSE CONTENT / MODULES -->
+    <section id="modulos" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Mira Todo Lo que Incluye <br><span class="text-fuchsia">"Maestría en Repostería Digital"</span></h2>
+            
+            <ul class="nav nav-pills mb-4 justify-content-center" id="moduleTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all" type="button" role="tab">Todos los Módulos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="bonus-tab" data-bs-toggle="pill" data-bs-target="#bonus" type="button" role="tab">Bonos</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="moduleTabsContent">
+                <div class="tab-pane fade show active" id="all" role="tabpanel">
+                    <div class="accordion" id="courseAccordion">
+                        <!-- Módulo 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#module1">
+                                    <strong>Módulo 1:</strong> Los Cimientos de tu Negocio Digital
+                                </button>
+                            </h2>
+                            <div id="module1" class="accordion-collapse collapse show" data-bs-parent="#courseAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Encuentra tu nicho rentable de repostería.</li>
+                                        <li>Guía definitiva para nombrar tu marca.</li>
+                                        <li>Kit de herramientas digitales gratuitas.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Módulo 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#module2">
+                                    <strong>Módulo 2:</strong> Creación de Productos Digitales Irresistibles
+                                </button>
+                            </h2>
+                            <div id="module2" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Plantillas editables para recetas (PDF, Canva).</li>
+                                        <li>Cómo tomar fotos profesionales con el celular.</li>
+                                        <li>Graba videos de procesos increíbles con tu smartphone.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Más módulos... -->
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="bonus" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 text-center">
+                                <div class="card-body">
+                                    <span class="bonus-badge badge mb-3">BONO 1</span>
+                                    <h5 class="card-title">Lista de Proveedores para Impresión bajo Demanda</h5>
+                                    <p class="card-text">Acceso a proveedores confiables para expandir tu negocio.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 text-center">
+                                <div class="card-body">
+                                    <span class="bonus-badge badge mb-3">BONO 2</span>
+                                    <h5 class="card-title">Plantillas de Email Marketing</h5>
+                                    <p class="card-text">Plantillas listas para usar y aumentar tus conversiones.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 text-center">
+                                <div class="card-body">
+                                    <span class="bonus-badge badge mb-3">BONO 3</span>
+                                    <h5 class="card-title">Comunidad Privada de Facebook</h5>
+                                    <p class="card-text">Conecta con otras reposteras digitales y comparte experiencias.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING AND CTA -->
+    <section id="oferta" class="py-5 bg-dark-custom text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold">¡Accede Hoy con un Precio de Lanzamiento!</h2>
+                    <p class="lead">Invierte en tu futuro y comienza tu transformación digital.</p>
+
+                    <div class="my-4">
+                        <div class="price-tag">
+                            <span class="text-decoration-line-through h6 d-block">$197 USD</span>
+                            <span class="h2 fw-bold">$97 USD</span>
+                        </div>
+                        <p class="mt-3">¡Pago único y acceso de por vida!</p>
+                    </div>
+
+                    <a href="https://tusitio.systeme.io/checkout" class="btn btn-primary btn-lg my-3">¡QUIERO COMPRAR AHORA!</a>
+                    <p class="mt-3"><i class="fas fa-lock me-2"></i>Checkout Seguro. Pago 100% seguro garantizado.</p>
+
+                    <div class="mt-4">
+                        <img src="https://placehold.co/300x100/fff/333?text=Garantía+7+Días" alt="Garantía de 7 días" class="img-fluid">
+                        <p class="mt-2">Tu inversión está 100% protegida por nuestra garantía de 7 días. Si el curso no cumple con tus expectativas, te reembolsamos sin preguntas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Preguntas Frecuentes</h2>
+            <div class="accordion" id="faqAccordion">
+                <!-- Pregunta 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            ¿Necesito ser experta en repostería o tecnología?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <strong>¡Para nada!</strong> El curso está diseñado para principiantes absolutos en ambos temas. Solo necesitas pasión por la repostería y ganas de aprender.
+                        </div>
+                    </div>
+                </div>
+                <!-- Pregunta 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            ¿Cómo y cuándo recibo el acceso al curso?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            El acceso es inmediato. Recibirás un email con tus credenciales para ingresar a la plataforma de alumnos apenas se confirme tu pago.
+                        </div>
+                    </div>
+                </div>
+                <!-- Más FAQs... -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="text-gold">Maestría en Repostería Digital</h5>
+                    <p>Transformamos tu pasión por la repostería en un negocio digital rentable.</p>
+                    <div>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="text-gold">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#beneficios" class="text-white">Beneficios</a></li>
+                        <li><a href="#testimonios" class="text-white">Testimonios</a></li>
+                        <li><a href="#oferta" class="text-white">Precio</a></li>
+                        <li><a href="#" class="text-white">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="text-gold">Contacto</h5>
+                    <p><i class="fas fa-envelope me-2 text-gold"></i> soporte@reposteriadigital.com</p>
+                    <p class="mb-0">¿Preguntas? Escríbenos:</p>
+                    <a href="mailto:soporte@reposteriadigital.com" class="btn btn-outline-light mt-2">Contáctanos</a>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>© 2023 - Maestría en Repostería Digital. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    
+    <!-- Script para smooth scroll -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

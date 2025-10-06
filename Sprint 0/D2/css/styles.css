@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+}
+
+/* flex container
+    the parent element that holds flex items
+*/
+
+/* 
+    We work with AXIS, X Axis and Y Axis
+    Default Value == Main Axis --> Horizontal
+    Cross Axis == Overrid the VAlue --> Vertical
+*/
+.container {
+    display: flex;
+    width: 1100px;
+    margin: 0 auto;
+    background-color: #333333;
+    height: 750px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+}
+
+/* Flex Item
+    the children of a flex container
+*/
+
+.box {
+    width: 490px;
+    height: 250px;
+    border: 1px solid white;
+    background-color: beige;
+    /* align-self: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 300px; */
+}

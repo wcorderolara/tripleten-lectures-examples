@@ -1,0 +1,51 @@
+/* CARD COMPONENT */
+.card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.6s ease;
+    position: relative;
+}
+
+.card:hover {
+    top: -10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card__image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card__content {
+    padding: 25px;
+}
+
+.card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #2c3d50;
+}
+
+.card p {
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+.card__button {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3 ease;
+}
+
+.card__button:hover {
+    background-color: #2980b9;
+}
+
