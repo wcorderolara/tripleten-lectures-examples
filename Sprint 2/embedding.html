@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .iframe {
+            position: relative;
+            aspect-ratio: 9/16; /* height / width */
+            width: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Embedding Example</h1>
+
+    <ul>
+        <li>
+            16:9 --> WideScreen
+            <p>
+                For every 16 units of width, there are 9 units of height.
+                for every 16px of width there are 9px of height.
+            </p>
+        </li>
+        <li>4:3</li>
+        <li>1:1 --> Square</li>
+        <li>9:16 --> Vertical</li>
+        <li>21:9 --> Cinema</li>
+    </ul>
+
+    <iframe class="iframe"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.000830261354!2d-122.39258952369505!3d37.79002031128074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085806415f06bdf%3A0xf048a8b5bd7b0cf3!2sGoogle%20San%20Francisco%20-%20345%20Spear%20St!5e0!3m2!1sen!2sgt!4v1759861748521!5m2!1sen!2sgt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/kPa7bsKwL-c?si=c3VLWaBPmIrDNvIi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+    
+</body>
+</html>
