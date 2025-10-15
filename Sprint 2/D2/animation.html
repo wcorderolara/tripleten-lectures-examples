@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations and Special Effects</title>
+
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: coral;
+            margin: 50px;
+            transition: all 0.7s ease;          
+        }
+
+        .box:hover {
+            background-color: lightseagreen;
+            cursor: pointer;
+            transform: rotate(180deg) scale(0.5);
+            border-radius: 50%;
+        }
+
+        /* ANIMATION */
+        @keyframes slide-in {
+            from {
+                transform: translatex(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translatex(0);
+                opacity: 1;
+            }
+        }
+
+        .sliding-in {
+            animation: slide-in 4s ease-out
+        }
+
+        @keyframes grow-and-spin {
+            0% {
+                transform: scale(1) rotate(0deg);
+                background-color: #3498db;
+                border-radius: 50%;
+            }
+
+            25% {
+                transform: scale(1.25) rotate(90deg);
+                background-color: #2ecc71;
+                border-radius: 25%;
+            }
+
+            50% {
+                transform: scale(1.5) rotate(180deg);
+                background-color: #e74c3c;
+                border-radius: 0%;
+            }
+            75% {
+                transform: scale(1.25) rotate(270deg);
+                background-color: #f1c40f;
+                border-radius: 25%;
+            }
+
+            100% {
+                transform: scale(1) rotate(360deg);
+                background-color: #3498db;
+                border-radius: 50%;
+            }
+        }
+
+        .grow-spin {
+            animation: grow-and-spin 3s infinite;
+        }
+
+
+    </style>
+</head>
+<body style="position: relative">
+    <h1>What are CSS Animations?</h1>
+    <p>
+        CSS animations make elements move, change or transform over time.
+    </p>
+
+    <h2>Why we use CSS Animations?</h2>
+    <ul>
+        <li>Make websites feel alive and interactive</li>
+        <li>Guide users attention to important elements</li>
+        <li>Provide visual feedback (hover buttons, loadings)</li>
+        <li>Create delightful user experiences</li>
+        <li>Yo do not need JavaScript for basic animations</li>
+    </ul>
+
+    <h2>Types of CSS Animations</h2>
+    <ul style="z-index: 10;">
+        <li>
+            <strong>Transforms</strong> Change shape, position, or size instantly.
+            rotate, scale move, skew
+        </li>
+        <li>
+            <strong>Transitions</strong> smooth change from one state to another.
+            hover effects and color changes.
+        </li>
+        <li>
+            <strong>Keyframe Animations</strong> complex, multi-step animations.
+            Loading spinners, bouncing elements, slideshows, aniated menus and background.
+        </li>
+    </ul>
+
+    <h3>Transformations</h3>
+
+    <div class="box mix" style="z-index: 1;">
+
+    </div>
+
+    <div class="box scale rotate">
+
+    </div>
+
+     <div class="box sliding-in" style="background-color: blue">
+
+    </div>
+
+    <div class="box grow-spin"></div>
+
+</body>
+</html>

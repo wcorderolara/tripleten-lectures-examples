@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'Coolvetica-Rg';
+    src: url('./fonts/Coolvetica-Rg.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr auto;
+    grid-template-areas: 
+        "header header header header"
+        "sidebar main main ads"
+        ". main main ."
+        "footer footer footer footer";
+}
+
+.header {
+    grid-area: header;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.ads {
+    grid-area: ads;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    grid-area: footer;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.main{
+    grid-area: main;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.grid-item {
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.grid-item.alt {
+    background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+}
+
+.move-item-11{
+    /* grid-column: 1 / 2;
+    grid-row: 1 / 2; */
+    /* grid-area: row start / column start / row end / column end; */
+    /* grid-area: 1 / 1 / 2 / 2 */
+    grid-area: 1 / 3 / 2 / 4;
+}

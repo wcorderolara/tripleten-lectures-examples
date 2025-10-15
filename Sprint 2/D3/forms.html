@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>HTML Forms</title>
+</head>
+
+<body>
+    <h1>HTML Forms</h1>
+
+    <div class="form-demo">
+        <form action="/submit-page" method="POST">
+            <!-- Input Fields -->
+            <label>
+                Username
+                <input type="text" name="username" placeholder="@username" required>
+            </label>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+
+            <input type="number" name="age" min="18" max="100" placeholder="enter data >18 and <100">
+
+            <input type="date" name="birthdate" min="1940-01-01" max="2020-12-31">
+
+            <input type="email" name="email" placeholder="you@example.com">
+
+            <input type="file" name="profile_picture">
+
+            <input type="color" name="favorite_color">
+
+            <input type="url" name="website">
+
+            <input type="range" name="satisfaction" min="18" max="100" step="1">
+
+            <input type="submit" value="Send Form">
+
+            <input type="reset" value="Reset Info">
+
+        </form>
+    </div>
+
+    <div class="form-demo">
+        <form>
+            <!-- radiobuttons -->
+            <h6>Sports</h6>
+            <div style="display: flex; gap: 10px; margin-top: -15px;">
+                <label>
+                    <input type="radio" name="sports" value="soccer">
+                    Soccer
+                </label>
+                <label>
+                    <input type="radio" name="sports" value="basketball">
+                    Basketball
+                </label>
+                <label>
+                    <input type="radio" name="sports" value="Football">
+                    Football
+                </label>
+            </div>
+
+
+            <!-- checkboxes -->
+            <label>
+                <input type="checkbox" name="subscribe" value="yes" checked>
+                Susbscribe to newsletter
+            </label>
+
+            <h5>Account Settings</h5>
+            <label>
+                <input type="checkbox" name="notifications" value="yes">
+                Email Notification
+            </label>
+            <label>
+                <input type="checkbox" name="two-factor" value="yes">
+                Enable Two Factor Authentication
+            </label>
+        </form>
+    </div>
+
+    <div class="form-demo">
+        <form>
+            <textarea style="width: 100%;" name="message" rows="5" cols="55"
+            placeholder="leave your message here">
+
+            </textarea>
+
+            <select name="country" style="width: 100%;">
+                <option value="United States">USA</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Colombia">Colombia</option>
+                <option value="France">France</option>
+                <option value="Mexico">Mexico</option>
+            </select>
+
+            <select name="country" style="width: 100%; margin-top: 20px" multiple>
+                <option value="United States">USA</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Colombia">Colombia</option>
+                <option value="France">France</option>
+                <option value="Mexico">Mexico</option>
+            </select>
+
+            <select name="country" style="width: 50%; margin-top: 20px">
+                <optgroup label="America">
+                    <option value="United States">USA</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Mexico">Mexico</option>
+                </optgroup>
+
+                <optgroup label="Europe">
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Spain">Spain</option>
+                </optgroup>
+
+
+                <optgroup label="Asia">
+                    <option value="China">China</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Korea">Korea</option>
+                </optgroup>
+
+            </select>
+        </form>
+    </div>
+</body>
+
+</html>
