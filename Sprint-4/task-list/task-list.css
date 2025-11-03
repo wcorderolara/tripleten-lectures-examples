@@ -1,0 +1,19 @@
+.task-list{
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 18px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    border-left: 4px solid #4CAF50;
+    transition: opacity 0.3s;
+}
+
+.task-text {
+    flex: 1;
+    margin: 0 15px;
+}
