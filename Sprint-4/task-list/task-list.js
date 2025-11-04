@@ -2,6 +2,9 @@ const TaskList = function() {
     return `
         <ul class="task-list">
         </ul>
+        <button class="btn btn-warning" onclick="deleteAllItems()">
+            Delete all tasks
+        </button>
     `;
 }
 
