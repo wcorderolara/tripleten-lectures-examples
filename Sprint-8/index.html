@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokémon Explorer</title>
+    <link rel="stylesheet" href="./index.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pokémon Explorer</h1>
+            <p class="subtitle">Click on a Pokémon to see its details</p>
+        </header>
+
+        <main class="content" aria-label="Pokémon explorer">
+            <section class="pokemon-list" aria-label="Pokémon list">
+                <h2>First 30 Pokémon</h2>
+                <div id="pokemon-list-container">
+                    <div class="loading">Loading Pokémon...</div>
+                </div>
+            </section>
+
+            <section class="pokemon-details" aria-label="Pokémon details">
+                <h2>Pokémon Details</h2>
+                <div id="pokemon-details-container">
+                    <div class="loading">Select a Pokémon to see details</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./pokemon-api.js"></script>
+</body>
+</html>

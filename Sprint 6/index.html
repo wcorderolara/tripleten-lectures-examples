@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <section id="main">
+        <div id="container" class="flex flex-wrap">
+        </div>
+    </section>
+
+    <form id="testForm">
+        <button id="testButton" type="submit" class="p-2 bg-blue-500 text-blue-100 cursor-pointer rounded">
+            Render Cards
+        </button>
+    </form>
+
+    <template id="card-template">
+
+        <div class="max-w-sm h-[500px] rounded-lg overflow-hidden shadow-lg bg-white flex mr-2 ml-2 mb-2 flex-col card">
+            <!-- {/* Card Image */} -->
+            <img class="w-full h-48 object-cover flex-shrink-0 card-image"
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
+                alt="Mountain landscape" />
+
+            <!-- {/* Card Content */} -->
+            <div class="p-6 flex-1 flex flex-col overflow-hidden">
+                <!-- Category Badge -->
+                <span
+                    class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mb-2 self-start card-category">
+                    Category
+                </span>
+                <!-- {/* Card Title */} -->
+                <h2 class="text-2xl font-bold text-gray-800 mb-2 card-title">
+                    Card Title
+                </h2>
+
+                <!-- {/* Card Subtitle/Meta */} -->
+                <p class="text-sm text-gray-500 mb-4 card-subtitle">
+                    Posted on November 12, 2025
+                </p>
+
+                <!-- {/* Card Description */} -->
+                <p class="text-gray-600 mb-4 overflow-y-auto flex-1 card-description">
+                    This is a description of the card content. It provides additional details about what the card
+                    represents and can span multiple lines if needed.
+                </p>
+
+
+                <!-- {/* Card Actions */} -->
+                <div class="flex gap-3">
+                    <button
+                        class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition duration-200 card-read-button">
+                        Read More
+                    </button>
+                    <button
+                        class="px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold rounded transition duration-200 card-share-button">
+                        Share
+                    </button>
+                    <button
+                        class="px-4 py-2 border border-red-300 hover:bg-red-50 text-red-700 font-semibold rounded transition duration-200 card-delete-button">
+                        Delete Card
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+    </template>
+
+    <script src="./dom.js"></script>
+</body>
+
+</html>

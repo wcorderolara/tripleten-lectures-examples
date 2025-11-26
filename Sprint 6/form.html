@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .success {
+            color: #2ecc71;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #submitBtn {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        #submitBtn:hover {
+            background-color: #2980b9;
+        }
+        
+        #resetBtn {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        #resetBtn:hover {
+            background-color: #c0392b;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-section h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #3498db;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        .character-count {
+            text-align: right;
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        .validation-summary {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .validation-summary h3 {
+            margin-top: 0;
+            color: #e74c3c;
+        }
+        
+        .validation-summary ul {
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Application Form</h1>
+        
+        <div class="progress-bar">
+            <div class="progress" id="formProgress"></div>
+        </div>
+        
+        <div class="validation-summary" id="validationSummary">
+            <h3>Please correct the following errors:</h3>
+            <ul id="errorList"></ul>
+        </div>
+        
+        <form id="jobApplicationForm" novalidate>
+            <div class="form-section">
+                <h2>Personal Information</h2>
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
+                    <div class="error" id="fullNameError">Please enter your full name</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address">
+                    <div class="error" id="emailError">Please enter a valid email address</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                    <div class="error" id="phoneError">Please enter a valid phone number</div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Professional Information</h2>
+                
+                <div class="form-group">
+                    <label for="position">Desired Position *</label>
+                    <select id="position" name="position">
+                        <option value="">Select a position</option>
+                        <option value="frontend">Frontend Developer</option>
+                        <option value="backend">Backend Developer</option>
+                        <option value="fullstack">Full Stack Developer</option>
+                        <option value="uiux">UI/UX Designer</option>
+                        <option value="devops">DevOps Engineer</option>
+                    </select>
+                    <div class="error" id="positionError">Please select a position</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">Years of Experience *</label>
+                    <input type="number" id="experience" name="experience" min="0" max="50" placeholder="Enter years of experience">
+                    <div class="error" id="experienceError">Please enter years of experience (0-50)</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="salary">Expected Salary (USD)</label>
+                    <input type="number" id="salary" name="salary" min="0" placeholder="Enter expected salary">
+                    <div class="success" id="salarySuccess">Salary is optional but helps us match your expectations</div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Additional Information</h2>
+                
+                <div class="form-group">
+                    <label for="coverLetter">Cover Letter *</label>
+                    <textarea id="coverLetter" name="coverLetter" rows="5" placeholder="Tell us why you're a good fit for this position"></textarea>
+                    <div class="character-count">
+                        <span id="charCount">0</span>/500 characters
+                    </div>
+                    <div class="error" id="coverLetterError">Please provide a cover letter (minimum 50 characters)</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="agreeTerms" name="agreeTerms">
+                        I agree to the terms and conditions *
+                    </label>
+                    <div class="error" id="agreeTermsError">You must agree to the terms and conditions</div>
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <button type="button" id="resetBtn">Reset Form</button>
+                <button type="submit" id="submitBtn">Submit Application</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="./forms.js">
+        
+    </script>
+</body>
+</html>

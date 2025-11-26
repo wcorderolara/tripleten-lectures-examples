@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    .success {
+      color: green;
+      font-size: 14px;
+    }
+    .char-counter {
+      font-size: 12px;
+      color: #666;
+      text-align: right;
+    }
+    button {
+      padding: 10px 20px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .submit-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .reset-btn {
+      background-color: #f44336;
+      color: white;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Create Your Account</h1>
+  
+  <form id="registrationForm">
+    <!-- Username -->
+    <div class="form-group">
+      <label for="username">Username *</label>
+      <input type="text" id="username" name="username" required>
+      <div id="usernameError" class="error"></div>
+      <div id="usernameSuccess" class="success"></div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required>
+      <div id="emailError" class="error"></div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password *</label>
+      <input type="password" id="password" name="password" required>
+      <div id="passwordError" class="error"></div>
+    </div>
+
+    <!-- Age -->
+    <div class="form-group">
+      <label for="age">Age *</label>
+      <input type="number" id="age" name="age" min="13" max="120" required>
+      <div id="ageError" class="error"></div>
+    </div>
+
+    <!-- Country -->
+    <div class="form-group">
+      <label for="country">Country *</label>
+      <select id="country" name="country" required>
+        <option value="">Select your country</option>
+        <option value="usa">United States</option>
+        <option value="uk">United Kingdom</option>
+        <option value="canada">Canada</option>
+        <option value="australia">Australia</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <!-- Bio -->
+    <div class="form-group">
+      <label for="bio">Bio (Optional)</label>
+      <textarea id="bio" name="bio" rows="4" maxlength="200"></textarea>
+      <div class="char-counter">
+        <span id="charCount">0</span>/200 characters
+      </div>
+    </div>
+
+    <!-- Terms and Conditions -->
+    <div class="form-group">
+      <label>
+        <input type="checkbox" id="terms" name="terms" required>
+        I agree to the Terms and Conditions *
+      </label>
+      <div id="termsError" class="error"></div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="form-group">
+      <label>
+        <input type="checkbox" id="newsletter" name="newsletter">
+        Subscribe to newsletter
+      </label>
+    </div>
+
+    <!-- Buttons -->
+    <button type="submit" class="submit-btn">Register</button>
+    <button type="button" id="resetButton" class="reset-btn">Clear Form</button>
+  </form>
+
+  <!-- Result Display -->
+  <div id="result"></div>
+
+  <script src="form.js"></script>
+</body>
+</html>
