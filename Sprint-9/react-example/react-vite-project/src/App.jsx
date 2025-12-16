@@ -25,7 +25,7 @@ function App() {
   }
 
   const editTask = (index, newTaskContent) => {
-    const updatedTasks = [...tasksList];
+    const updatedTasks = [...tasksList]; // I'm creating a shallow copy of my origian tasksList Array
     updatedTasks[index] = newTaskContent.trim();
     setTasksList(updatedTasks);
     setEditingTask(null);

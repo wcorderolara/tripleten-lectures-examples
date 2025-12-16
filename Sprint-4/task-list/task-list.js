@@ -8,6 +8,7 @@ const TaskList = function() {
     `;
 }
 
+// returning Strings
 const TaskListItem = function(taskText, idItemToDelete) {
     return `
         <span class="task-text">
