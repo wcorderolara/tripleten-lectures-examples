@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const todoService = require('../services/todoService');
+// const todoService = require('../services/todoService');
+const {getTodos, createTodo} = require('../services/todoController');
 const {sendSuccess, sendError, sendCreated} = require('../utils/responseHandlers');
 const logger = require('../utils/logger');
 
@@ -17,21 +18,13 @@ router.get('/', asyncHandler((req, res) => {
     })
 }))
 
+router.route('/todos')
+    .get(getTodos)
+    .post(createTodo);
+
 // GET ALL TODOS and GET THE SINGLE TODO BY ID
 // /api/todos --> GET
-router.get('/todos', asyncHandler(async(req, res) => {
-    try {
-        let todos = await todoService.getAllTodos();
-
-        sendSuccess(res, {
-            count: todos.length,
-            todos: todos
-        })
-    } catch (error) {
-        logger.error(`Error fetching todos: ${error.message}`);
-        sendError(res, 'Failed to fetch todos');
-    }
-}));
+// router.get('/todos', getTodos);
 
 // GET TODO BY ID
 // /api/todos/:id --> GET
@@ -51,25 +44,7 @@ router.get('/todos/:id', async(req, res) => {
 
 // CREATE NEW TODO
 // /api/todos --> POST
-router.post('/todos', async(req, res) => {
-    try {
-        const body =req.body;
-        if(!body) {
-            return sendError(res, 'Request body is required', 400);
-        }
-
-        //create the new todo
-        const newTodo = await todoService.createTodo({
-            title: body.title.trim(),
-            description: body.description
-        })
-
-        sendCreated(res, newTodo);
-    } catch (error) {
-        logger.error(`Error creating todo: ${error.message}`);
-        sendError(res, 'Failed to create todo');
-    }
-})
+// router.post('/todos', createTodo);
 
 // UPDATE TODO BY ID /api/todos/:id --> PUT
 router.put('/todos/:id', async(req, res) => {
