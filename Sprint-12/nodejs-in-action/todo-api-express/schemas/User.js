@@ -13,6 +13,12 @@ const UserSchema = new Schema({
     }
 }, { timestamps: true, strict: true });
 
+UserSchema.virtual('todos', {
+    ref: 'Todo',
+    localField: '_id',
+    foreignField: 'user'
+});
+
 // Create the model
 const User = mongoose.model('User', UserSchema);
 module.exports = User;

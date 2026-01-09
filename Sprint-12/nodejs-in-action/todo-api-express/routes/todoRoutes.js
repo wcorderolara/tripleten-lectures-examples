@@ -1,77 +1,18 @@
 const express = require('express');
 const router = express.Router();
 // const todoService = require('../services/todoService');
-const {getTodos, createTodo} = require('../services/todoController');
-const {sendSuccess, sendError, sendCreated} = require('../utils/responseHandlers');
-const logger = require('../utils/logger');
+const {getTodos, createTodo, getTodoById, updateTodo, deleteTodo, getTodosByUser} = require('../services/todoController');
 
-const asyncHandler = (fn) => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
-
-router.get('/', asyncHandler((req, res) => {
-    sendSuccess(res, {
-        messsage: 'Welcome to the TODO API',
-        version: '1.0.0',
-        endpoints: {
-            'GET /api/todos': 'Get All Todos',
-            'GET /api/todos/:id': 'Get Todo by Id'
-        }
-    })
-}))
-
-router.route('/todos')
+router.route('/')
     .get(getTodos)
     .post(createTodo);
 
-// GET ALL TODOS and GET THE SINGLE TODO BY ID
-// /api/todos --> GET
-// router.get('/todos', getTodos);
 
-// GET TODO BY ID
-// /api/todos/:id --> GET
-router.get('/todos/:id', async(req, res) => {
-    try {
-        const todo = await todoService.getTodoById(req.params.id);
-        if(todo) {
-            sendSuccess(res, todo);
-        } else {
-            sendError(res, 'Todo not found', 404);
-        }
-    } catch (error) {
-        logger.error(`Error fetching todo by id: ${error.message}`);
-        sendError(res, 'Failed to fetch todo');
-    }
-})
+router.route('/:id')
+    .get(getTodoById)
+    .put(updateTodo)
+    .delete(deleteTodo);
 
-// CREATE NEW TODO
-// /api/todos --> POST
-// router.post('/todos', createTodo);
-
-// UPDATE TODO BY ID /api/todos/:id --> PUT
-router.put('/todos/:id', async(req, res) => {
-    try {
-        const todoUpdated = await todoService.updateTodo(req.params.id, req.body);
-        if(!todoUpdated) {
-            return sendError(res, 'Todo not found', 404);
-        }
-        sendSuccess(res, todoUpdated);
-    } catch (error) {
-        logger.error(`Error updating todo: ${error.message}`);
-        sendError(res, 'Failed to update todo');
-    }
-})
-
-// DELETE /api/todos/:id --> DELETE
-router.delete('/todos/:id', async(req, res) => {
-    try {
-        const todoDeleted = await todoService.deleteTodo(req.params.id);
-        if(!todoDeleted) {
-            return sendError(res, 'Todo not found', 404);
-        }
-        sendSuccess(res, todoDeleted);
-    } catch (error) {
-        logger.error(`Error deleting todo: ${error.message}`);
-        sendError(res, 'Failed to delete todo');
-    }
-})
+router.get('/user/:userId', getTodosByUser);
 
 module.exports = router;

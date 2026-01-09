@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT ||3005;
 const todoRoutes = require("./routes/todoRoutes");
+const userRoutes = require("./routes/userRoutes");
 const todoService = require("./services/todoService");
 const connectDB = require("./config/database");
 const logger = require("./utils/logger");
@@ -10,7 +11,18 @@ const logger = require("./utils/logger");
 // PARSER
 app.use(express.json());
 // ROUTES
-app.use("/api", todoRoutes);
+app.get('/api', asyncHandler((req, res) => {
+    sendSuccess(res, {
+        messsage: 'Welcome to the TODO API',
+        version: '1.0.0',
+        endpoints: {
+            'GET /api/todos': 'Get All Todos',
+            'GET /api/todos/:id': 'Get Todo by Id'
+        }
+    })
+}))
+app.use("/api/todos", todoRoutes);
+app.use("/api/users", userRoutes);
 // GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {
   console.error("Global error handler:", err);

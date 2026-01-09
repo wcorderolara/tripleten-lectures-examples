@@ -6,7 +6,43 @@ const { sendSuccess, sendError, sendCreated } = require('../utils/responseHandle
 const getTodos = async (req, res) => {
     try {
         const todos = await Todo.find({})
-        sendSuccess(res, todos);
+        return sendSuccess(res, todos);
+
+    } catch (error) {
+        logger.error(error);
+        sendError(res, error);
+    }
+}
+
+const getTodoById = async(req, res) => {
+    try {
+        const todo = await Todo.findById(req.params.id)
+                               .populate('user', 'username email');
+        if(!todo) {
+            return sendError(res, 'Todo not found', 404);
+        }
+
+        return sendSuccess(res, todo);
+    } catch (error) {
+        logger.error(error);
+        sendError(res, error);
+    }
+}
+
+const getTodosByUser = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userId);
+
+        if(!user) {
+            return sendError(res, 'User not found', 404);
+        }
+        const filter = { user: req.params.userId };
+
+        const todos = await Todo.find(filter)
+                                .sort({ createdAt: -1 })
+                                .select('-__v');
+
+        return sendSuccess(res, todos);
 
     } catch (error) {
         logger.error(error);
@@ -28,14 +64,53 @@ const createTodo = async (req, res) => {
             user: body.user
         })
 
-        sendCreated(res, newTodo);
+        return sendCreated(res, newTodo);
     } catch (error) {
         logger.error(error);
-        sendError(res, error);
+        return sendError(res, error);
+    }
+}
+
+const updateTodo = async (req, res) => {
+    try {
+        const {title, description, completed} = req.body;
+        const todo = await Todo.findOneAndUpdate(
+            {_id: req.params.id},
+            {
+                title, description, completed
+            },
+            {new: true, runValidators: true}
+        );
+
+        if(!todo) {
+            return sendError(res, 'Todo not found', 404);
+        }
+
+        return sendSuccess(res, todo);
+    } catch (error) {
+        logger.error(error);
+        return sendError(res, error);
+    }
+}
+
+const deleteTodo = async (req, res) => {
+    try {
+        const todo = await Todo.findOneAndDelete({_id: req.params.id});
+        if(!todo) {
+            return sendError(res, 'Todo not found', 404);
+        }
+        return sendSuccess(res, todo);
+    } catch (error) {
+        logger.error(error);
+        return sendError(res, error);
     }
 }
 
 module.exports = {
     getTodos,
-    createTodo
+    getTodoById,
+    getTodosByUser,
+    createTodo,
+    updateTodo,
+    deleteTodo
 }
