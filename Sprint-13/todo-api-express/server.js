@@ -1,14 +1,17 @@
 require('dotenv').config();
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const PORT = process.env.PORT ||3005;
 const todoRoutes = require("./routes/todoRoutes");
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
+const listRoutes = require("./routes/todoListRouter");
 const connectDB = require("./config/database");
 const logger = require("./utils/logger");
 
 // PARSER
+app.use(cors());
 app.use(express.json());
 // ROUTES
 app.get('/api', (req, res) => {
@@ -21,9 +24,11 @@ app.get('/api', (req, res) => {
         }
     })
 })
-app.use("/api/todos", todoRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/lists", listRoutes);
+app.use("/api/lists/:listId/todos", todoRoutes);
+
 // GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {
   console.error("Global error handler:", err);

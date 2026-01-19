@@ -17,15 +17,11 @@ const TodoSchema = new Schema({
         type: Boolean,
         default: false
     },
-    user:{
+    todoList: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: [true, 'User is required']
+        ref: 'TodoList',
+        required: [true, 'TodoList reference is required']
     },
-    isPublic: {
-        type: Boolean,
-        default: true
-    }
 }, { timestamps: true, strict: true })
 
 // Create the model
