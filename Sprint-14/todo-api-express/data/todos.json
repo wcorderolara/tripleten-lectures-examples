@@ -1,0 +1,26 @@
+[
+  {
+    "id": "mk340ky5haitncexbma",
+    "title": "First Todo",
+    "description": "Hey, this is my first todo",
+    "completed": false,
+    "createdAt": "2026-01-06T21:36:40.973Z",
+    "updatedAt": "2026-01-06T21:36:40.973Z"
+  },
+  {
+    "id": "mk342nmdonbrzc294ti",
+    "title": "Second Todo",
+    "description": "Hey, this is my second todo",
+    "completed": false,
+    "createdAt": "2026-01-06T21:38:17.749Z",
+    "updatedAt": "2026-01-06T21:38:17.749Z"
+  },
+  {
+    "id": "mk484ec4n6hejm6rjb9",
+    "title": "First Todo in Express",
+    "description": "This is my first Todo in Express.js",
+    "completed": false,
+    "createdAt": "2026-01-07T16:19:23.668Z",
+    "updatedAt": "2026-01-07T16:25:50.053Z"
+  }
+]
