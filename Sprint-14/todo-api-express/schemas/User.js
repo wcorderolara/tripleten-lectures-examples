@@ -36,8 +36,8 @@ const UserSchema = new Schema({
     }
 }, { timestamps: true, strict: true });
 
-UserSchema.virtual('todos', {
-    ref: 'Todo',
+UserSchema.virtual('todoList', {
+    ref: 'TodoList',
     localField: '_id',
     foreignField: 'user'
 });

@@ -1,5 +1,5 @@
-const TodoList = require('../models/TodoList');
-const Todo = require('../models/Todo');
+const TodoList = require('../schemas/TodoList');
+const Todo = require('../schemas/Todo');
 const logger = require('../utils/logger');
 const {sendSuccess, sendError, sendCreated} = require('../utils/responseHandlers');
 

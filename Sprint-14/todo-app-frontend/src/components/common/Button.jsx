@@ -75,3 +75,10 @@ const Button = forwardRef(({
 Button.displayName = 'Button';
 
 export default Button;
+
+
+/*
+<Button variant="outline" size="lg">Cancel</Button>
+<Button variant="primary" size="md" isLoading>Submit</Button>
+
+*/
