@@ -28,8 +28,14 @@ export const signUpSchema = z.object({
         .regex(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
                 "Password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number"
-        )
-});
+        ),
+    confirmPassword: z
+        .string()
+        .min(1, 'Please confirm your password')
+    }).refine((data) => data.password === data.confirmPassword, {
+        message: "Passwords do not match",
+        path: ['confirmPassword']
+    });
 
 /**
  * Sign In Schema

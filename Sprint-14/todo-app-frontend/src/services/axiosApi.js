@@ -23,7 +23,7 @@ axiosClient.interceptors.request.use( (config) => {
 // Response interceptor for global error handling
 axiosClient.interceptors.response.use( (response) => {
     const {data} = response;
-    return data;
+    return data.data;
 }, (error) => {
     if (error.response) {
         return Promise.reject(error.response.data);

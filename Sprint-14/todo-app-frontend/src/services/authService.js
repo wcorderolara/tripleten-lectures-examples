@@ -10,6 +10,7 @@ const authService = {
     signup: async (userData) => {
         // eslint-disable-next-line no-useless-catch
         try {
+            console.log(userData);
             const response = await axiosClient.post(ENDPOINTS.SIGNUP, userData);
             const { token, user } = response;
 
@@ -18,6 +19,7 @@ const authService = {
 
             return response;
         } catch (error) {
+            console.log(error.message);
             throw error;
         }
     },
