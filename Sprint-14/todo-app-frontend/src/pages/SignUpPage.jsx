@@ -1,17 +1,18 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Input, Alert, Card } from '../components/common';
 import { signUpSchema } from '../validations/authSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
-import authService from '../services/authService';
+import { Link, useNavigate } from 'react-router';
+import { useAuth } from '../hooks/useAuth';
 
 const SignUpPage = () => {
-    const [apiError, setApiError] = useState(null);
+    const navigate = useNavigate();
+    const { signup, isLoading, error, clearError } = useAuth();
 
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitting }
+        formState: { errors }
     } = useForm({
         resolver: zodResolver(signUpSchema),
         defaultValues: {
@@ -24,16 +25,13 @@ const SignUpPage = () => {
 
     // Form submission handler
     const submitHandler = async (data) => {
-        try {
-            setApiError(null);
-            // we need remove confirmPassword before sending data to the backend
-            // eslint-disable-next-line no-unused-vars
-            const { confirmPassword, ...userData } = data;
+        clearError();
+        // eslint-disable-next-line no-unused-vars
+        const { confirmPassword, ...userData } = data; // Exclude confirmPassword
+        const result = await signup(userData);
 
-            // Execute signup API CALL
-            await authService.signup(userData);
-        } catch (error) {
-            setApiError(error.message || 'An unexpected error occurred');
+        if(result.success) {
+        navigate('/dashboard');
         }
     }
 
@@ -52,12 +50,12 @@ const SignUpPage = () => {
 
             <Card>
                 {/* Error Alert */}
-                {apiError && (
+                {error && (
                     <Alert
                         type="error"
-                        message={apiError}
+                        message={error}
                         dismissible
-                        onDismiss={() => setApiError(null)}
+                        onDismiss={clearError}
                     />
                 )}
 
@@ -106,10 +104,10 @@ const SignUpPage = () => {
                         type="submit"
                         variant="primary"
                         fullWidth
-                        isLoading={isSubmitting}
+                        isLoading={isLoading}
                         className="mt-6"
                     >
-                        {isSubmitting ? 'Creating Account...' : 'Sign Up'}
+                        {isLoading ? 'Creating Account...' : 'Sign Up'}
                     </Button>
                     
                 </form>

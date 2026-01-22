@@ -1,17 +1,18 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Input, Alert, Card } from '../components/common';
 import { signInSchema } from '../validations/authSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
-import authService from '../services/authService';
+import { useAuth } from '../hooks/useAuth';
+import { Link, useNavigate } from 'react-router';
 
 const SignInPage = () => {
-    const [apiError, setApiError] = useState(null);
+    const navigate = useNavigate();
+    const { login, isLoading, error, clearError } = useAuth();
 
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitting }
+        formState: { errors }
     } = useForm({
         resolver: zodResolver(signInSchema),
         defaultValues: {
@@ -22,12 +23,10 @@ const SignInPage = () => {
 
     // Form submission handler
     const submitHandler = async (data) => {
-        try {
-            setApiError(null);
-
-            await authService.signin(data);
-        } catch (error) {
-            setApiError(error.message || 'An unexpected error occurred');
+        clearError();
+        const result = await login(data);
+        if(result.success) {
+            navigate('/dashboard');
         }
     };
 
@@ -46,12 +45,12 @@ const SignInPage = () => {
 
             <Card>
                 {/* Error Alert */}
-                {apiError && (
+                {error && (
                     <Alert
                         type="error"
-                        message={apiError}
+                        message={error}
                         dismissible
-                        onDismiss={() => setApiError(null)}
+                        onDismiss={clearError}
                     />
                 )}
 
@@ -82,10 +81,10 @@ const SignInPage = () => {
                         type="submit"
                         variant="primary"
                         fullWidth
-                        isLoading={isSubmitting}
+                        isLoading={isLoading}
                         className="mt-6"
                     >
-                        {isSubmitting ? 'Signing In...' : 'Sign In'}
+                        {isLoading ? 'Signing In...' : 'Sign In'}
                     </Button>
                     
                 </form>
