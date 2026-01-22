@@ -10,6 +10,7 @@ export { default as Alert } from './Alert';
 export { default as Modal } from './Modal';
 export { default as Spinner, PageSpinner } from './Spinner';
 export { default as Card, CardHeader, CardTitle, CardFooter } from './Card';
+export { default as ConfirmModal } from './ConfirmModal';
 
 /**
  * import {Button, Modal} from './components/common';
