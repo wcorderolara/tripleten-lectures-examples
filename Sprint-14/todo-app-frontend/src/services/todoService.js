@@ -1,4 +1,4 @@
-import fetchApi from '../utils/fetchApi.js';
+import fetchApi from '../services/fetchApi.js';
 import { ENDPOINTS } from '../utils/constants.js';
 
 const todoService = {
