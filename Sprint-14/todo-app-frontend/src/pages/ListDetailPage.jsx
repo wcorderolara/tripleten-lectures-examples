@@ -30,8 +30,8 @@ const ListDetailPage = () => {
             setIsLoading(true);
             setError(null);
             const response = await listService.getListById(listId);
-            setList(response.data);
-            setTodos(response.data.todos || []);
+            setList(response);
+            setTodos(response?.todos || []);
         } catch (err) {
             if (err.error === 'List not found') {
                 navigate('/dashboard');
@@ -54,8 +54,8 @@ const ListDetailPage = () => {
                 todo._id, 
                 !todo.completed
             );
-            setTodos(prev => 
-                prev.map(t => t._id === todo._id ? response.data : t)
+            setTodos(prev =>
+                prev.map(t => t._id === todo._id ? response : t)
             );
         } catch (err) {
             setError(err.error || 'Failed to update todo');

@@ -58,7 +58,7 @@ const CreateListModal = ({ isOpen, onClose, onSuccess}) => {
 
             resetForm();
 
-            onSuccess?.(response.data);
+            onSuccess?.(response);
             onClose();
         } catch (error) {
             setApiError(error.message || 'An unexpected error occurred');

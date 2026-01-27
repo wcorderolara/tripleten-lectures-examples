@@ -4,7 +4,7 @@ import { PageSpinner } from '../common/Spinner';
 
 /**
  * PrivateRoute Component - Protects routes that require authentication.
- * 
+ *
  * usage:
  * <Route patch="/dashboard" element={<PrivateRoute><Dashbaord /></PrivateRoute>}
  *
@@ -21,8 +21,8 @@ const PrivateRoute = ({ children }) => {
     // Redirect to login if not authtenticated
     if(!isAuthenticated) {
         return (
-            <Navigate 
-                to="/login"
+            <Navigate
+                to="/signin"
                 state={{ from: location }}
                 replace
             />
@@ -33,4 +33,3 @@ const PrivateRoute = ({ children }) => {
 }
 
 export default PrivateRoute;
-

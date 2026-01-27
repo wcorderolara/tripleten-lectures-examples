@@ -1,5 +1,6 @@
 const TodoList = require('../schemas/TodoList');
 const Todo = require('../schemas/Todo');
+const User = require('../schemas/User');
 const logger = require('../utils/logger');
 const {sendSuccess, sendError, sendCreated} = require('../utils/responseHandlers');
 
@@ -8,11 +9,11 @@ const getMyLists = async (req, res, next) => {
         const lists = await TodoList.find({user: req.user._id})
                                     .select('-__v')
                                     .sort({createdAt: -1})
-        
+
         const listWithCounts = await Promise.all(
             lists.map(async (list) => {
                 const totalCount = await Todo.countDocuments({ todoList: list._id });
-                
+
                 return {
                     ...list.toObject(),
                     todoCount: totalCount
@@ -29,7 +30,7 @@ const getMyLists = async (req, res, next) => {
 
 const getLists = async (req, res, next) => {
     try {
-        const list = await TodoList.findOne({ _id: req.params.id, user: req.user._id })
+        const list = await TodoList.findOne({ _id: req.params.listId, user: req.user._id })
                                    .select('-__v')
                                    .populate('user', 'name');
         if(!list) {
@@ -79,13 +80,13 @@ const getListsByUser = async (req, res, next) => {
 const createList = async (req, res, next) => {
     try {
         const {name, description, isPublic} = req.body;
-        const newList = new TodoList.create({
+        const newList = await TodoList.create({
             name,
             description,
-            isPublic: isPublic || true,
+            isPublic: isPublic ?? true,
             user: req.user._id
         });
-        
+
         return sendCreated(res, newList);
     } catch (error) {
         logger.error('Error creating todo list:', error);
@@ -95,21 +96,23 @@ const createList = async (req, res, next) => {
 
 const updateList = async (req, res, next) => {
     try {
-        if(list.user.toString() !== req.user._id.toString()) {
+        const existingList = await TodoList.findById(req.params.listId);
+
+        if(!existingList) {
+            return sendError(res, 'Todo list not found', 404);
+        }
+
+        if(existingList.user.toString() !== req.user._id.toString()) {
             return sendError(res, 'Unauthorized to update this todo list', 403);
         }
 
         const {name, description, isPublic} = req.body;
-        
+
         const list = await TodoList.findOneAndUpdate(
-            { _id: req.params.id },
+            { _id: req.params.listId },
             { name, description, isPublic},
             { new: true, runValidators: true }
         )
-
-        if(!list) {
-            return sendError(res, 'Todo list not found', 404);
-        }
 
         return sendSuccess(res, list);
     } catch (error) {
@@ -120,17 +123,17 @@ const updateList = async (req, res, next) => {
 
 const deleteList = async (req, res, next) => {
     try {
-        const list = await TodoList.findOne({ _id: req.params.id});
+        const list = await TodoList.findOne({ _id: req.params.listId});
 
         if(!list) {
             return sendError(res, 'Todo list not found', 404);
         }
-        
+
         if(list.user.toString() !== req.user._id.toString()) {
             return sendError(res, 'Unauthorized to delete this todo list', 403);
         }
 
-        await list.remove();
+        await TodoList.findByIdAndDelete(list._id);
 
         return sendSuccess(res, { message: 'Todo list deleted successfully' });
     } catch (error) {

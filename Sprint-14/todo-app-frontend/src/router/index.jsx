@@ -14,9 +14,9 @@ const ListDetailPage = lazy(() => import("../pages/ListDetailPage"));
 const ProfilePage = lazy(() => import("../pages/ProfilePage"));
 
 // eslint-disable-next-line react-refresh/only-export-components
-const LazyWrapper = ({ children }) => {
-  <Suspense fallback={<PageSpinner />}>{children}</Suspense>;
-};
+const LazyWrapper = ({ children }) => (
+  <Suspense fallback={<PageSpinner />}>{children}</Suspense>
+);
 
 export const router = createBrowserRouter([
   // Public routes
@@ -40,39 +40,33 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-    //   <PrivateRoute>
+      <PrivateRoute>
         <Layout />
-    //   </PrivateRoute>
+      </PrivateRoute>
     ),
     children: [
       {
         path: "/dashboard",
         element: (
-          // <PrivateRoute>
-          // <LazyWrapper>
-          <DashboardPage />
-          // </LazyWrapper>
-          // </PrivateRoute>
+          <LazyWrapper>
+            <DashboardPage />
+          </LazyWrapper>
         ),
       },
       {
-        path: "/list/:listId",
+        path: "/lists/:listId",
         element: (
-          <PrivateRoute>
-            <LazyWrapper>
-              <ListDetailPage />
-            </LazyWrapper>
-          </PrivateRoute>
+          <LazyWrapper>
+            <ListDetailPage />
+          </LazyWrapper>
         ),
       },
       {
         path: "/profile",
         element: (
-          <PrivateRoute>
-            <LazyWrapper>
-              <ProfilePage />
-            </LazyWrapper>
-          </PrivateRoute>
+          <LazyWrapper>
+            <ProfilePage />
+          </LazyWrapper>
         ),
       },
     ],

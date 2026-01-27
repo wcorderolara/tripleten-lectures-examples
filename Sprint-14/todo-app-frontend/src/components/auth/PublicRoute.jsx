@@ -4,15 +4,15 @@ import { PageSpinner } from '../common/Spinner';
 
 /**
  * PublicRoute Component - For routes that don't require authentication.
- * 
+ *
  * usage:
  * <Route patch="/dashboard" element={<PublicRoute><SignInPage /></PublicRoute>}
  *
  */
 
-const PublicRoute = ({ children, redirectTo }) => {
+const PublicRoute = ({ children, redirectTo = "/dashboard" }) => {
     const { isAuthenticated, isLoading } = useAuth();
-    
+
     // Show loading spinner while checkint auth state
     if(isLoading) {
         return <PageSpinner />;

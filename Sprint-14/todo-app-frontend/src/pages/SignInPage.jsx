@@ -23,8 +23,10 @@ const SignInPage = () => {
 
     // Form submission handler
     const submitHandler = async (data) => {
+        console.log('Form Data:', data);
         clearError();
         const result = await login(data);
+        console.log('Login Result:', result);
         if(result.success) {
             navigate('/dashboard');
         }

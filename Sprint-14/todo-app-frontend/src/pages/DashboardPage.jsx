@@ -25,7 +25,7 @@ const DashboardPage = () => {
             setIsLoading(true);
             setError(null);
             const response = await listService.getMyLists();
-            setLists(response.data || []);
+            setLists(response?.data || []);
         } catch (err) {
             setError(err.error || 'Failed to load lists');
         } finally {

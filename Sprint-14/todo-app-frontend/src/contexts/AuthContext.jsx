@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
         
         try {
             const response = await authService.signin(credentials);
-            const { user, token } = response.data;
+            const { user, token } = response;
             
             dispatch({
                 type: AUTH_ACTIONS.LOGIN_SUCCESS,

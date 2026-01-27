@@ -30,6 +30,7 @@ const authService = {
         // eslint-disable-next-line no-useless-catch
         try {
             const response = await axiosClient.post(ENDPOINTS.SIGNIN, credentials);
+            console.log('signin authservice response:', response);
             const { token, user } = response;
             setAccessToken(token);
             setUser(user);

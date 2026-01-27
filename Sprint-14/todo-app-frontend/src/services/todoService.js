@@ -38,6 +38,15 @@ const todoService = {
             throw error;
         }
     },
+    toggleTodo: async (listId, todoId, completed) => {
+        // eslint-disable-next-line no-useless-catch
+        try {
+            const response = await fetchApi.put(ENDPOINTS.TODO_BY_ID(listId, todoId), { completed });
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    },
     deleteTodo: async (listId, todoId) => {
         // eslint-disable-next-line no-useless-catch
         try {

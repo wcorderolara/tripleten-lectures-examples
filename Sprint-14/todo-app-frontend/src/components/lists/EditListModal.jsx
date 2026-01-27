@@ -67,7 +67,7 @@ const EditListModal = ({ isOpen, onClose, list, onSuccess }) => {
             setIsSubmitting(true);
             const response = await listService.updateList(list._id, validData);
             
-            onSuccess?.(response.data);
+            onSuccess?.(response);
             onClose();
         } catch (error) {
             setApiError(error.error || 'Failed to update list');
