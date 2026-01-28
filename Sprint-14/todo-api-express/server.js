@@ -9,6 +9,7 @@ const authRoutes = require("./routes/authRoutes");
 const listRoutes = require("./routes/todoListRouter");
 const connectDB = require("./config/database");
 const logger = require("./utils/logger");
+const { sendSuccess } = require("./utils/responseHandler");
 
 // PARSER
 app.use(cors());
